@@ -5,9 +5,9 @@ import java.util.Vector;
 
 import Jama.Matrix;
 
-public class ARMAMethod
+public class ArmaMethod
 {
-	public ARMAMethod()
+	public ArmaMethod()
 	{
 		
 	}

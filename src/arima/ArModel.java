@@ -2,12 +2,12 @@ package arima;
 
 import java.util.Vector;
 
-public class ARModel
+public class ArModel
 {
 	private double [] data;
 	private int p;
 	
-	public ARModel(double [] data, int p)
+	public ArModel(double [] data, int p)
 	{
 		this.data = data;
 		this.p = p;
@@ -16,7 +16,7 @@ public class ARModel
 	public Vector<double []> solveCoeOfAR()
 	{
 		Vector<double []>vec = new Vector<>();
-		double [] arCoe = new ARMAMethod().computeARCoe(this.data, this.p);
+		double [] arCoe = new ArmaMethod().computeARCoe(this.data, this.p);
 		
 		vec.add(arCoe);
 		

@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
-public class ARIMAModel
+public class ArimaModel
 {
 	double [] originalData = {};
 	double [] dataFirDiff = {};
 	
 	Vector<double []>arimaCoe = new Vector<>();
 	
-	public ARIMAModel()
+	public ArimaModel()
 	{
 		
 	}
 	
-	public ARIMAModel(double [] originalData)
+	public ArimaModel(double [] originalData)
 	{
 		this.originalData = originalData;
 	}
@@ -110,23 +110,23 @@ public class ARIMAModel
 			
 			if (model[i][0] == 0)
 			{
-				MAModel ma = new MAModel(data, model[i][1]);
+				MaModel ma = new MaModel(data, model[i][1]);
 				coe = ma.solveCoeOfMA();
 				type = 1;
 			}
 			else if (model[i][1] == 0)
 			{
-				ARModel ar = new ARModel(data, model[i][0]);
+				ArModel ar = new ArModel(data, model[i][0]);
 				coe = ar.solveCoeOfAR();
 				type = 2;
 			}
 			else
 			{
-				ARMAModel arma = new ARMAModel(data, model[i][0], model[i][1]);
+				ArmaModel arma = new ArmaModel(data, model[i][0], model[i][1]);
 				coe = arma.solveCoeOfARMA();
 				type = 3;
 			}				
-			double aic = new ARMAMethod().getModelAIC(coe, data, type);
+			double aic = new ArmaMethod().getModelAIC(coe, data, type);
 			// 在求解过程中如果阶数选取过长，可能会出现NAN或者无穷大的情况
 			if (Double.isFinite(aic) && !Double.isNaN(aic) && aic < minAIC)
 			{

@@ -2,13 +2,13 @@ package arima;
 
 import java.util.Vector;
 
-public class ARMAModel
+public class ArmaModel
 {
 	private double [] data = {};
 	private int p;		//AR阶数
 	private int q;		//MA阶数
 	
-	public ARMAModel(double [] data, int p, int q)
+	public ArmaModel(double [] data, int p, int q)
 	{
 		this.data = data;
 		this.p = p;
@@ -25,7 +25,7 @@ public class ARMAModel
 		Vector<double []>vec = new Vector<>();
 		
 		//ARMA模型
-		double [] armaCoe = new ARMAMethod().computeARMACoe(this.data, this.p, this.q);
+		double [] armaCoe = new ArmaMethod().computeARMACoe(this.data, this.p, this.q);
 		//AR系数
 		double [] arCoe = new double[this.p + 1];
 		System.arraycopy(armaCoe, 0, arCoe, 0, arCoe.length);

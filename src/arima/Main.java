@@ -32,12 +32,12 @@ public class Main
 			{
 				data[i] = al.get(i);
 			}
-			
-			ARIMAModel arima = new ARIMAModel(data);
-			
+
+			ArimaModel arima = new ArimaModel(data);//输入原始数据
+
 			ArrayList<int []> list = new ArrayList<>();
-			int period = 7;
-			int modelCnt = 5, cnt = 0;			//通过多次预测的平均值作为预测值
+			int period = 7;// 差分阶数
+			int modelCnt = 10, cnt = 0;			//通过多次预测的平均值作为预测值
 			int [] tmpPredict = new int [modelCnt];
 			for (int k = 0; k < modelCnt; ++k)			//控制通过多少组参数进行计算最终的结果
 			{
@@ -64,7 +64,7 @@ public class Main
 				sumPredict += (double)tmpPredict[k] / (double)cnt;
 			}
 			int predict = (int)Math.round(sumPredict);
-			System.out.println("Predict value="+predict);
+			System.out.println("Predict value="+predict);// 输出多次预测均值
 		}
 		catch (FileNotFoundException fnfe)
 		{
