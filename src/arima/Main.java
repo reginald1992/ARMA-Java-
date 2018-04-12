@@ -34,9 +34,9 @@ public class Main
 			{
 				data[i] = al.get(i);
 			}
-//针对小数的预测，输入数据放大1000000倍，转化成int型变量；对预测结果缩小10000倍，转化成double型变量；实现小数预测
+//针对小数的预测，输入数据放大10000倍，转化成int型变量；对预测结果缩小10000倍，转化成double型变量；实现小数预测
 			for (int i = 0; i < data.length; i++){
-			    data[i] = (int)(data[i]*1000000);
+			    data[i] = (int)(data[i]*10000);
             }
 
             ArimaModel arima = new ArimaModel(data);//输入原始数据
@@ -70,7 +70,7 @@ public class Main
 				sumPredict += (double)tmpPredict[k] / (double)cnt;
 			}
 			int predict = (int)Math.round(sumPredict);
-			double tempPredictResult = (double)predict/1000000.0;
+			double tempPredictResult = (double)predict/10000.0;
             BigDecimal b = new BigDecimal(tempPredictResult);
             double predictResult = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
             System.out.println("Predict value="+predictResult);// 输出多次预测均值,保留4位有效数字
