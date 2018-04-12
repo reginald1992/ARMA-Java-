@@ -18,7 +18,7 @@ public class Main
 {
 	public static void main(String args[])
 	{
-		Path path = Paths.get("./data/", "data.txt");
+		Path path = Paths.get("./data/", "test2.csv");
 		File file = path.toFile();
 		try
 		(
@@ -37,7 +37,11 @@ public class Main
 				data[i] = al.get(i);
 			}
 
-			ArimaModel arima = new ArimaModel(data);//输入原始数据
+			for (int i = 0; i < data.length; i++){
+			    data[i] = (int)(data[i]*10000);
+            }
+
+            ArimaModel arima = new ArimaModel(data);//输入原始数据
 
 			ArrayList<int []> list = new ArrayList<>();
 			int period = 7;// 差分阶数
@@ -68,7 +72,8 @@ public class Main
 				sumPredict += (double)tmpPredict[k] / (double)cnt;
 			}
 			int predict = (int)Math.round(sumPredict);
-			System.out.println("Predict value="+predict);// 输出多次预测均值
+			double predictResult = (double)predict/10000.0;
+			System.out.println("Predict value="+predictResult);// 输出多次预测均值
 		}
 		catch (FileNotFoundException fnfe)
 		{
