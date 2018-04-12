@@ -36,7 +36,7 @@ public class Main
 			{
 				data[i] = al.get(i);
 			}
-
+//针对小数的预测，输入数据放大10000倍，转化成int型变量；对预测结果缩小10000倍，转化成double型变量；实现小数预测
 			for (int i = 0; i < data.length; i++){
 			    data[i] = (int)(data[i]*10000);
             }
