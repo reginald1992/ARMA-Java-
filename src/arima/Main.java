@@ -1,5 +1,9 @@
 package arima;
-
+/**
+ * 在Java实现中，主要给出了AR、MA以及ARMA的参数估计方法，并未对其平稳性以及模型的最佳阶数进行严格性证明，
+ * 只是通过遍历模型参数列表的方式由AIC准则或者BIC准则确定最佳p、q阶数。
+ * 同时在参数估计的过程中，主要是利用Yule-Walker方法进行求解；同时为了避免在求解过程中进行逆矩阵的计算，
+ * 采用Levinson递推公式求解Y-W方程，得到模型的参数。*/
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
