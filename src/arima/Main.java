@@ -4,7 +4,7 @@ package arima;
  * 只是通过遍历模型参数列表的方式由AIC准则或者BIC准则确定最佳p、q阶数。
  * 同时在参数估计的过程中，主要是利用Yule-Walker方法进行求解；同时为了避免在求解过程中进行逆矩阵的计算，
  * 采用Levinson递推公式求解Y-W方程，得到模型的参数。
- * */
+ */
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ public class Main
 {
 	public static void main(String args[])
 	{
-		Path path = Paths.get("./data/", "test0.csv");
+		Path path = Paths.get("./data/", "test2.csv");
 		File file = path.toFile();
 		try
 		(
@@ -34,7 +34,8 @@ public class Main
 			{
 				data[i] = al.get(i);
 			}
-//针对小数的预测，输入数据放大10000倍，转化成int型变量；对预测结果缩小10000倍，转化成double型变量；实现小数预测
+			//针对小数的预测，输入数据放大10000倍，转化成int型变量；
+            // 对预测结果缩小10000倍，转化成double型变量；实现小数预测
 			for (int i = 0; i < data.length; i++){
 			    data[i] = (int)(data[i]*10000);
             }
@@ -72,7 +73,7 @@ public class Main
 			int predict = (int)Math.round(sumPredict);
 			double tempPredictResult = (double)predict/10000.0;
             BigDecimal b = new BigDecimal(tempPredictResult);
-            double predictResult = b.setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+            double predictResult = b.setScale(5, BigDecimal.ROUND_HALF_UP).doubleValue();
             System.out.println("Predict value="+predictResult);// 输出多次预测均值,保留4位有效数字
 		}
 		catch (FileNotFoundException fnfe)
